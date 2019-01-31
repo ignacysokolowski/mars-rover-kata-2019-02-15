@@ -4,9 +4,15 @@ set -e
 
 cd "$(dirname "$0")/../src"
 
-../venv/bin/python -m pytest -v \
+if [ "$1" = "--coverage" ]; then
+  ARGS="\
+  -v \
   --cov kata \
   --cov-report term-missing \
   --cov-report html:../ci/test/reports/coverage \
   --junit-xml=../ci/test/reports/results.xml \
-  tests
+  "
+else
+  ARGS=""
+fi
+../venv/bin/python -m pytest $ARGS tests

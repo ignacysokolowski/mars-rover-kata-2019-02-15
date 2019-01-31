@@ -27,6 +27,9 @@ install: venv ## Install the application with its dependencies for local develop
 	venv/bin/python -m pip install -r src/tests/requirements.txt
 
 test: ## Run tests
+	./ci/run-tests.sh --coverage
+
+test-fast: ## Run tests without coverage
 	./ci/run-tests.sh
 
 lint-style: ## Lint code style

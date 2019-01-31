@@ -1,4 +1,4 @@
-.PHONY: help ci venv install test test-commit lint-style lint-types sort-imports
+.PHONY: help ci venv install test test-fast test-commit lint-style lint-types sort-imports
 
 help: ## This help dialog
 	@IFS=$$'\n' ; \

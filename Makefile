@@ -1,4 +1,4 @@
-.PHONY: help ci venv install test test-fast test-commit lint-style lint-types sort-imports
+.PHONY: help ci ci-commit venv install test test-fast test-commit lint-style lint-types sort-imports
 
 help: ## This help dialog
 	@IFS=$$'\n' ; \
@@ -17,6 +17,9 @@ help: ## This help dialog
     done
 
 ci: install test lint-style lint-types ## Run the CI pipeline locally
+
+ci-commit: # Whenever a source file changes, run the CI pipeline locally and commit if it succeeds
+	./ci/ci-commit.sh
 
 venv: ## Create a Python virtual environment, if does not exist yet
 	test -d venv || python3.7 -m venv venv

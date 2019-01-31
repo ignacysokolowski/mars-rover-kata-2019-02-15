@@ -1,4 +1,4 @@
-.PHONY: help ci venv install test lint-style lint-types sort-imports
+.PHONY: help ci venv install test test-commit lint-style lint-types sort-imports
 
 help: ## This help dialog
 	@IFS=$$'\n' ; \
@@ -31,6 +31,9 @@ test: ## Run tests
 
 test-fast: ## Run tests without coverage
 	./ci/run-tests.sh
+
+test-commit: # Whenever a source file changes, run tests and commit if they succeed
+	./ci/test-commit.sh
 
 lint-style: ## Lint code style
 	./ci/lint-style.sh

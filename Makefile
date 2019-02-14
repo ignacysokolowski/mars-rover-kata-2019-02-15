@@ -1,5 +1,4 @@
-.PHONY: help ci ci-commit venv install test test-fast test-commit lint-style lint-types sort-imports
-
+.PHONY: help
 help: ## This help dialog
 	@IFS=$$'\n' ; \
 	help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##/:/'`); \
@@ -16,33 +15,43 @@ help: ## This help dialog
         printf "%s\n" $$help_info; \
     done
 
+.PHONY: ci
 ci: install test lint-style lint-types ## Run the CI pipeline locally
 
+.PHONY: ci-commit
 ci-commit: # Whenever a source file changes, run the CI pipeline locally and commit if it succeeds
 	./ci/ci-commit.sh
 
+.PHONY: venv
 venv: ## Create a Python virtual environment, if does not exist yet
 	test -d venv || python3.7 -m venv venv
 
+.PHONY: install
 install: venv ## Install the application with its dependencies for local development
 	venv/bin/python -m pip install -U pip && \
 	venv/bin/python -m pip install -e src && \
 	venv/bin/python -m pip install -r src/tests/requirements.txt
 
+.PHONY: test
 test: ## Run tests
 	./ci/run-tests.sh --coverage
 
+.PHONY: test-fast
 test-fast: ## Run tests without coverage
 	./ci/run-tests.sh
 
+.PHONY: test-commit
 test-commit: # Whenever a source file changes, run tests and commit if they succeed
 	./ci/test-commit.sh
 
+.PHONY: lint-style
 lint-style: ## Lint code style
 	./ci/lint-style.sh
 
+.PHONY: lint-types
 lint-types: ## Lint types
 	./ci/lint-types.sh
 
+.PHONY: sort-imports
 sort-imports: ## Fix the order of Python imports
 	cd src && ../venv/bin/python -m isort -rc .

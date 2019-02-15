@@ -77,6 +77,9 @@ class West(Direction):
     def next_to_the_right(self) -> Direction:
         return Direction.north()
 
+    def next_to_the_left(self) -> Direction:
+        return Direction.south()
+
 
 class Location:
 

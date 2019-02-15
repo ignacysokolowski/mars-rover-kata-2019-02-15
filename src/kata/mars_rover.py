@@ -27,6 +27,9 @@ class Direction(abc.ABC):
     def next_to_the_right(self) -> 'Direction':
         ...
 
+    def next_to_the_left(self) -> 'Direction':
+        raise NotImplementedError()
+
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}()'
 
@@ -43,6 +46,9 @@ class North(Direction):
 
     def next_to_the_right(self) -> Direction:
         return Direction.east()
+
+    def next_to_the_left(self) -> Direction:
+        return Direction.west()
 
 
 class South(Direction):
@@ -117,6 +123,9 @@ class Rover:
 
     def turn_right(self) -> None:
         self._direction = self._direction.next_to_the_right()
+
+    def turn_left(self) -> None:
+        self._direction = self._direction.next_to_the_left()
 
     def position(self) -> Location:
         return self._position

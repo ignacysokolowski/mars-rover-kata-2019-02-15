@@ -70,6 +70,11 @@ class TestRover:
         rover.turn_right()
         assert rover.direction() == Direction.north()
 
+    def test_turns_left_from_north_to_west(self) -> None:
+        rover = Rover(Location(3, 3), Direction.north())
+        rover.turn_left()
+        assert rover.direction() == Direction.west()
+
 
 class TestLocation:
 

@@ -1,24 +1,3 @@
-class Location:
-
-    def __init__(self, x: int, y: int) -> None:
-        self._x = x
-        self._y = y
-
-    def next_north(self) -> 'Location':
-        return Location(3, 2)
-
-    def next_south(self) -> 'Location':
-        return Location(3, 4)
-
-    def __repr__(self) -> str:
-        return f'{self.__class__.__name__}({self._x!r}, {self._y!r})'
-
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Location):  # pragma: nocover
-            return NotImplemented
-        return self._x == other._x and self._y == other._y
-
-
 class Direction:
 
     @classmethod
@@ -39,6 +18,27 @@ class Direction:
         if not isinstance(other, Direction):  # pragma: nocover
             return NotImplemented
         return self._symbol == other._symbol
+
+
+class Location:
+
+    def __init__(self, x: int, y: int) -> None:
+        self._x = x
+        self._y = y
+
+    def next_north(self) -> 'Location':
+        return Location(3, 2)
+
+    def next_south(self) -> 'Location':
+        return Location(3, 4)
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self._x!r}, {self._y!r})'
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Location):  # pragma: nocover
+            return NotImplemented
+        return self._x == other._x and self._y == other._y
 
 
 class Rover:

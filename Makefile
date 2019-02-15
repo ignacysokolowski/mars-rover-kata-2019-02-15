@@ -16,7 +16,7 @@ help: ## This help dialog
     done
 
 .PHONY: ci
-ci: install test lint-style lint-types ## Run the CI pipeline locally
+ci: test lint-style lint-types ## Run the CI pipeline locally
 
 .PHONY: ci-commit
 ci-commit: # Whenever a source file changes, run the CI pipeline locally and commit if it succeeds

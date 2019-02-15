@@ -33,7 +33,7 @@ class Location:
             return self._next_south()
 
     def _next_north(self) -> 'Location':
-        return Location(self._x, 2)
+        return Location(self._x, self._y - 1)
 
     def _next_south(self) -> 'Location':
         return Location(self._x, 4)

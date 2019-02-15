@@ -52,25 +52,18 @@ class TestRover:
         rover.move_backward()
         assert rover.position() == Location(4, 3)
 
-    def test_turns_right_from_north_to_east(self) -> None:
-        rover = Rover(Location(3, 3), Direction.north())
+    @pytest.mark.parametrize(
+        ('initial', 'final'), [
+            (Direction.north(), Direction.east()),
+            (Direction.east(), Direction.south()),
+            (Direction.south(), Direction.west()),
+            (Direction.west(), Direction.north()),
+        ],
+    )
+    def test_turns_right(self, initial: Direction, final: Direction) -> None:
+        rover = Rover(Location(3, 3), initial)
         rover.turn_right()
-        assert rover.direction() == Direction.east()
-
-    def test_turns_right_from_east_to_south(self) -> None:
-        rover = Rover(Location(3, 3), Direction.east())
-        rover.turn_right()
-        assert rover.direction() == Direction.south()
-
-    def test_turns_right_from_south_to_west(self) -> None:
-        rover = Rover(Location(3, 3), Direction.south())
-        rover.turn_right()
-        assert rover.direction() == Direction.west()
-
-    def test_turns_right_from_west_to_north(self) -> None:
-        rover = Rover(Location(3, 3), Direction.west())
-        rover.turn_right()
-        assert rover.direction() == Direction.north()
+        assert rover.direction() == final
 
     @pytest.mark.parametrize(
         ('initial', 'final'), [

@@ -45,6 +45,11 @@ class TestRover:
         rover.move_backward()
         assert rover.position() == Location(2, 3)
 
+    def test_moves_backward_east_when_facing_west(self) -> None:
+        rover = Rover(Location(3, 3), Direction.west())
+        rover.move_backward()
+        assert rover.position() == Location(4, 3)
+
 
 class TestLocation:
 

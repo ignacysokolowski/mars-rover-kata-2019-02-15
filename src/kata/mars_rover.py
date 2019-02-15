@@ -24,8 +24,10 @@ class Direction:
             return Direction.south()
         elif self == Direction.south():
             return Direction.north()
-        else:
+        elif self == Direction.east():
             return Direction.west()
+        else:
+            return Direction.east()
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._symbol!r})'

@@ -1,12 +1,14 @@
 from typing import Tuple
 
+Location = Tuple[int, int]
+
 
 class Rover:
 
-    def __init__(self, initial_position: Tuple[int, int]) -> None:
+    def __init__(self, initial_position: Location) -> None:
         self._position = initial_position
 
-    def position(self) -> Tuple[int, int]:
+    def position(self) -> Location:
         return self._position
 
 

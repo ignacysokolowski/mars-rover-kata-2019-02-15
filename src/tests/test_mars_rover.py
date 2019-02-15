@@ -10,7 +10,7 @@ class Location:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Location):  # pragma: nocover
             return NotImplemented
-        return self._x == other._x
+        return self._x == other._x and self._y == other._y
 
 
 class Rover:
@@ -37,3 +37,6 @@ class TestLocation:
 
     def test_two_locations_with_differrent_x(self) -> None:
         assert Location(0, 0) != Location(1, 0)
+
+    def test_two_locations_with_differrent_y(self) -> None:
+        assert Location(0, 0) != Location(0, 1)

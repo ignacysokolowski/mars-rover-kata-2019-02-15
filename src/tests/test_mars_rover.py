@@ -13,7 +13,10 @@ class Location:
         return self._x == other._x and self._y == other._y
 
 
-Direction = str
+class Direction:
+
+    def __init__(self, symbol: str) -> None:
+        self._symbol = symbol
 
 
 class Rover:

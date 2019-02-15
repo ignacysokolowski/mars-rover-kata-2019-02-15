@@ -28,14 +28,14 @@ class Location:
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
-            return self.next_north()
+            return self._next_north()
         else:
-            return self.next_south()
+            return self._next_south()
 
-    def next_north(self) -> 'Location':
+    def _next_north(self) -> 'Location':
         return Location(3, 2)
 
-    def next_south(self) -> 'Location':
+    def _next_south(self) -> 'Location':
         return Location(3, 4)
 
     def __repr__(self) -> str:

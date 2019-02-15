@@ -6,7 +6,7 @@ class Direction:
 
     @classmethod
     def south(cls) -> 'Direction':
-        return cls('S')
+        return South()
 
     @classmethod
     def east(cls) -> 'Direction':
@@ -20,9 +20,7 @@ class Direction:
         self._symbol = symbol
 
     def opposite(self) -> 'Direction':
-        if self == Direction.south():
-            return Direction.north()
-        elif self == Direction.east():
+        if self == Direction.east():
             return Direction.west()
         else:
             return Direction.east()
@@ -43,6 +41,15 @@ class North(Direction):
 
     def opposite(self) -> 'Direction':
         return Direction.south()
+
+
+class South(Direction):
+
+    def __init__(self) -> None:
+        self._symbol = 'S'
+
+    def opposite(self) -> 'Direction':
+        return Direction.north()
 
 
 class Location:

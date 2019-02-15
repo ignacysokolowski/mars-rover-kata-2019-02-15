@@ -19,9 +19,6 @@ class Direction(abc.ABC):
     def west(cls) -> 'Direction':
         return West()
 
-    def __init__(self, symbol: str) -> None:
-        self._symbol = symbol
-
     @abc.abstractmethod
     def opposite(self) -> 'Direction':
         ...
@@ -34,17 +31,11 @@ class Direction(abc.ABC):
 
 class North(Direction):
 
-    def __init__(self) -> None:
-        self._symbol = 'N'
-
     def opposite(self) -> 'Direction':
         return Direction.south()
 
 
 class South(Direction):
-
-    def __init__(self) -> None:
-        self._symbol = 'S'
 
     def opposite(self) -> 'Direction':
         return Direction.north()
@@ -52,17 +43,11 @@ class South(Direction):
 
 class East(Direction):
 
-    def __init__(self) -> None:
-        self._symbol = 'E'
-
     def opposite(self) -> 'Direction':
         return Direction.west()
 
 
 class West(Direction):
-
-    def __init__(self) -> None:
-        self._symbol = 'W'
 
     def opposite(self) -> 'Direction':
         return Direction.east()

@@ -29,9 +29,10 @@ class Rover:
 class TestRover:
 
     def test_starts_at_the_given_position_and_facing_direction(self) -> None:
-        rover = Rover(Location(1, 3), 'N')
+        direction = 'N'
+        rover = Rover(Location(1, 3), direction)
         assert rover.position() == Location(1, 3)
-        assert rover.direction() == 'N'
+        assert rover.direction() == direction
 
 
 class TestLocation:

@@ -19,6 +19,9 @@ class Direction:
     def __init__(self, symbol: str) -> None:
         self._symbol = symbol
 
+    def opposite(self) -> 'Direction':
+        return Direction.south()
+
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._symbol!r})'
 
@@ -81,7 +84,7 @@ class Rover:
         self._position = self._position.next_in(self._direction)
 
     def move_backward(self) -> None:
-        self._position = self._position.next_in(Direction.south())
+        self._position = self._position.next_in(self._direction.opposite())
 
     def position(self) -> Location:
         return self._position

@@ -7,6 +7,9 @@ class Location:
     def next_north(self) -> 'Location':
         return Location(3, 2)
 
+    def next_south(self) -> 'Location':
+        return Location(3, 4)
+
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._x!r}, {self._y!r})'
 
@@ -48,7 +51,7 @@ class Rover:
         if self._direction == Direction.north():
             self._position = self._position.next_north()
         else:
-            self._position = Location(3, 4)
+            self._position = self._position.next_south()
 
     def position(self) -> Location:
         return self._position

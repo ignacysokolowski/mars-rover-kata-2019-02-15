@@ -1,4 +1,7 @@
-class Direction:
+import abc
+
+
+class Direction(abc.ABC):
 
     @classmethod
     def north(cls) -> 'Direction':
@@ -14,13 +17,14 @@ class Direction:
 
     @classmethod
     def west(cls) -> 'Direction':
-        return cls('W')
+        return West()
 
     def __init__(self, symbol: str) -> None:
         self._symbol = symbol
 
+    @abc.abstractmethod
     def opposite(self) -> 'Direction':
-        return Direction.east()
+        ...
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._symbol!r})'
@@ -56,6 +60,15 @@ class East(Direction):
 
     def opposite(self) -> 'Direction':
         return Direction.west()
+
+
+class West(Direction):
+
+    def __init__(self) -> None:
+        self._symbol = 'W'
+
+    def opposite(self) -> 'Direction':
+        return Direction.east()
 
 
 class Location:

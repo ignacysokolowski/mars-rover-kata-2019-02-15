@@ -22,9 +22,9 @@ class Direction:
 
 class Location:
 
-    def __init__(self, vertical: int, horizontal: int) -> None:
-        self._vertical = vertical
+    def __init__(self, horizontal: int, vertical: int) -> None:
         self._horizontal = horizontal
+        self._vertical = vertical
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
@@ -33,18 +33,18 @@ class Location:
             return self._next_south()
 
     def _next_north(self) -> 'Location':
-        return Location(self._vertical, self._horizontal - 1)
+        return Location(self._horizontal, self._vertical - 1)
 
     def _next_south(self) -> 'Location':
-        return Location(self._vertical, self._horizontal + 1)
+        return Location(self._horizontal, self._vertical + 1)
 
     def __repr__(self) -> str:
-        return f'{self.__class__.__name__}({self._vertical!r}, {self._horizontal!r})'
+        return f'{self.__class__.__name__}({self._horizontal!r}, {self._vertical!r})'
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Location):  # pragma: nocover
             return NotImplemented
-        return self._vertical == other._vertical and self._horizontal == other._horizontal
+        return self._horizontal == other._horizontal and self._vertical == other._vertical
 
 
 class Rover:
@@ -86,10 +86,10 @@ class TestLocation:
     def test_two_equal_locations(self) -> None:
         assert Location(0, 0) == Location(0, 0)
 
-    def test_two_locations_with_differrent_vertical_position(self) -> None:
+    def test_two_locations_with_differrent_horizontal_position(self) -> None:
         assert Location(0, 0) != Location(1, 0)
 
-    def test_two_locations_with_differrent_horizontal_position(self) -> None:
+    def test_two_locations_with_differrent_vertical_position(self) -> None:
         assert Location(0, 0) != Location(0, 1)
 
 

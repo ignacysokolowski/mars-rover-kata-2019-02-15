@@ -26,9 +26,6 @@ class Direction(abc.ABC):
     def opposite(self) -> 'Direction':
         ...
 
-    def __repr__(self) -> str:
-        return f'{self.__class__.__name__}({self._symbol!r})'
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Direction):  # pragma: nocover
             return NotImplemented

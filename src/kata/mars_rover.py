@@ -61,25 +61,13 @@ class Location:
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
-            return self._next_north()
+            return self._moved_verticaly_by(-1)
         elif direction == Direction.south():
-            return self._next_south()
+            return self._moved_verticaly_by(1)
         elif direction == Direction.east():
-            return self._next_east()
+            return self._moved_horizontaly_by(1)
         else:
-            return self._next_west()
-
-    def _next_north(self) -> 'Location':
-        return self._moved_verticaly_by(-1)
-
-    def _next_south(self) -> 'Location':
-        return self._moved_verticaly_by(1)
-
-    def _next_east(self) -> 'Location':
-        return self._moved_horizontaly_by(1)
-
-    def _next_west(self) -> 'Location':
-        return self._moved_horizontaly_by(-1)
+            return self._moved_horizontaly_by(-1)
 
     def _moved_horizontaly_by(self, points: int) -> 'Location':
         return Location(self._horizontal + points, self._vertical)

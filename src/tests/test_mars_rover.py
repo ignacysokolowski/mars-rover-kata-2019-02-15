@@ -22,9 +22,9 @@ class Direction:
 
 class Location:
 
-    def __init__(self, x: int, y: int) -> None:
-        self._x = x
-        self._y = y
+    def __init__(self, vertical: int, horizontal: int) -> None:
+        self._vertical = vertical
+        self._horizontal = horizontal
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
@@ -33,18 +33,18 @@ class Location:
             return self._next_south()
 
     def _next_north(self) -> 'Location':
-        return Location(self._x, self._y - 1)
+        return Location(self._vertical, self._horizontal - 1)
 
     def _next_south(self) -> 'Location':
-        return Location(self._x, self._y + 1)
+        return Location(self._vertical, self._horizontal + 1)
 
     def __repr__(self) -> str:
-        return f'{self.__class__.__name__}({self._x!r}, {self._y!r})'
+        return f'{self.__class__.__name__}({self._vertical!r}, {self._horizontal!r})'
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Location):  # pragma: nocover
             return NotImplemented
-        return self._x == other._x and self._y == other._y
+        return self._vertical == other._vertical and self._horizontal == other._horizontal
 
 
 class Rover:

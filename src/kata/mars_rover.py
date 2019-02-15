@@ -27,8 +27,9 @@ class Direction(abc.ABC):
     def next_to_the_right(self) -> 'Direction':
         ...
 
+    @abc.abstractmethod
     def next_to_the_left(self) -> 'Direction':
-        raise NotImplementedError()
+        ...
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}()'
@@ -70,6 +71,9 @@ class East(Direction):
 
     def next_to_the_right(self) -> Direction:
         return Direction.south()
+
+    def next_to_the_left(self) -> Direction:
+        return Direction.north()
 
 
 class West(Direction):

@@ -1,6 +1,8 @@
-from typing import Tuple
+class Location:
 
-Location = Tuple[int, int]
+    def __init__(self, x: int, y: int) -> None:
+        self._x = x
+        self._y = y
 
 
 class Rover:
@@ -15,6 +17,6 @@ class Rover:
 class TestRover:
 
     def test_starts_at_the_given_position(self) -> None:
-        position = (1, 3)
+        position = Location(1, 3)
         rover = Rover(position)
         assert rover.position() == position

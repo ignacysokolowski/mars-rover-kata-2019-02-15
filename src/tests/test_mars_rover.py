@@ -19,6 +19,10 @@ class Direction:
     def north(cls) -> 'Direction':
         return cls('N')
 
+    @classmethod
+    def south(cls) -> 'Direction':
+        return cls('S')
+
     def __init__(self, symbol: str) -> None:
         self._symbol = symbol
 
@@ -26,7 +30,9 @@ class Direction:
         return f'{self.__class__.__name__}({self._symbol!r})'
 
     def __eq__(self, other: object) -> bool:
-        return True
+        if not isinstance(other, Direction):  # pragma: nocover
+            return NotImplemented
+        return self._symbol == other._symbol
 
 
 class Rover:
@@ -67,3 +73,6 @@ class TestDirection:
 
     def test_two_equal_directions(self) -> None:
         assert Direction.north() == Direction.north()
+
+    def test_two_differernt_directions(self) -> None:
+        assert Direction.north() != Direction.south()

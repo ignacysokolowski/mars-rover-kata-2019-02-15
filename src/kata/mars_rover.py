@@ -104,8 +104,10 @@ class Rover:
             self._direction = Direction.east()
         elif self._direction == Direction.east():
             self._direction = Direction.south()
-        else:
+        elif self._direction == Direction.south():
             self._direction = Direction.west()
+        else:
+            self._direction = Direction.north()
 
     def position(self) -> Location:
         return self._position

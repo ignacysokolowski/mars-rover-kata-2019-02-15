@@ -21,12 +21,19 @@ class Rover:
     def position(self) -> Location:
         return self._position
 
+    def direction(self) -> str:
+        return 'N'
+
 
 class TestRover:
 
     def test_starts_at_the_given_position(self) -> None:
         rover = Rover(Location(1, 3))
         assert rover.position() == Location(1, 3)
+
+    def test_is_initially_facing_north(self) -> None:
+        rover = Rover(Location(1, 3))
+        assert rover.direction() == 'N'
 
 
 class TestLocation:

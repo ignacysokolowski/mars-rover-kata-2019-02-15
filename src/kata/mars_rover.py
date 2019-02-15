@@ -43,6 +43,9 @@ class North(Direction):
     def __init__(self) -> None:
         self._symbol = 'N'
 
+    def opposite(self) -> 'Direction':
+        return Direction.south()
+
 
 class Location:
 

@@ -1,3 +1,5 @@
+import pytest
+
 from kata.mars_rover import Direction
 from kata.mars_rover import Location
 from kata.mars_rover import Rover
@@ -70,19 +72,15 @@ class TestRover:
         rover.turn_right()
         assert rover.direction() == Direction.north()
 
-    def test_turns_left_from_north_to_west(self) -> None:
-        self.assert_rover_turns_left(Direction.north(), Direction.west())
-
-    def test_turns_left_from_west_to_south(self) -> None:
-        self.assert_rover_turns_left(Direction.west(), Direction.south())
-
-    def test_turns_left_from_south_to_east(self) -> None:
-        self.assert_rover_turns_left(Direction.south(), Direction.east())
-
-    def test_turns_left_from_east_to_north(self) -> None:
-        self.assert_rover_turns_left(Direction.east(), Direction.north())
-
-    def assert_rover_turns_left(self, initial: Direction, final: Direction) -> None:
+    @pytest.mark.parametrize(
+        ('initial', 'final'), [
+            (Direction.north(), Direction.west()),
+            (Direction.west(), Direction.south()),
+            (Direction.south(), Direction.east()),
+            (Direction.east(), Direction.north()),
+        ],
+    )
+    def test_turns_left(self, initial: Direction, final: Direction) -> None:
         rover = Rover(Location(3, 3), initial)
         rover.turn_left()
         assert rover.direction() == final

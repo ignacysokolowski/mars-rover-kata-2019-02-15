@@ -20,9 +20,7 @@ class Direction:
         self._symbol = symbol
 
     def opposite(self) -> 'Direction':
-        if self == Direction.north():
-            return Direction.south()
-        elif self == Direction.south():
+        if self == Direction.south():
             return Direction.north()
         elif self == Direction.east():
             return Direction.west()

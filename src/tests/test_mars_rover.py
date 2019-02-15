@@ -26,6 +26,12 @@ class Location:
         self._x = x
         self._y = y
 
+    def next_in(self, direction: Direction) -> 'Location':
+        if direction == Direction.north():
+            return self.next_north()
+        else:
+            return self.next_south()
+
     def next_north(self) -> 'Location':
         return Location(3, 2)
 
@@ -48,10 +54,7 @@ class Rover:
         self._direction = initial_direction
 
     def move_forward(self) -> None:
-        if self._direction == Direction.north():
-            self._position = self._position.next_north()
-        else:
-            self._position = self._position.next_south()
+        self._position = self._position.next_in(self._direction)
 
     def position(self) -> Location:
         return self._position

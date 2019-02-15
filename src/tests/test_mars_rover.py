@@ -15,6 +15,10 @@ class Location:
 
 class Direction:
 
+    @classmethod
+    def north(cls) -> 'Direction':
+        return cls('N')
+
     def __init__(self, symbol: str) -> None:
         self._symbol = symbol
 
@@ -35,7 +39,7 @@ class Rover:
 class TestRover:
 
     def test_starts_at_the_given_position_and_facing_direction(self) -> None:
-        direction = Direction('N')
+        direction = Direction.north()
         rover = Rover(Location(1, 3), direction)
         assert rover.position() == Location(1, 3)
         assert rover.direction() == direction

@@ -2,7 +2,7 @@ class Direction:
 
     @classmethod
     def north(cls) -> 'Direction':
-        return cls('N')
+        return North()
 
     @classmethod
     def south(cls) -> 'Direction':
@@ -36,6 +36,12 @@ class Direction:
         if not isinstance(other, Direction):  # pragma: nocover
             return NotImplemented
         return self._symbol == other._symbol
+
+
+class North(Direction):
+
+    def __init__(self) -> None:
+        self._symbol = 'N'
 
 
 class Location:

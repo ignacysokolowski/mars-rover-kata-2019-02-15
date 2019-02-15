@@ -13,23 +13,26 @@ class Location:
         return self._x == other._x and self._y == other._y
 
 
+Direction = str
+
+
 class Rover:
 
-    def __init__(self, initial_position: Location, initial_direction: str) -> None:
+    def __init__(self, initial_position: Location, initial_direction: Direction) -> None:
         self._position = initial_position
         self._direction = initial_direction
 
     def position(self) -> Location:
         return self._position
 
-    def direction(self) -> str:
+    def direction(self) -> Direction:
         return self._direction
 
 
 class TestRover:
 
     def test_starts_at_the_given_position_and_facing_direction(self) -> None:
-        direction = 'N'
+        direction = Direction('N')
         rover = Rover(Location(1, 3), direction)
         assert rover.position() == Location(1, 3)
         assert rover.direction() == direction

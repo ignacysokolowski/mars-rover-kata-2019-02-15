@@ -15,5 +15,6 @@ class Rover:
 class TestRover:
 
     def test_starts_at_the_given_position(self) -> None:
-        rover = Rover((1, 3))
-        assert rover.position() == (1, 3)
+        position = (1, 3)
+        rover = Rover(position)
+        assert rover.position() == position

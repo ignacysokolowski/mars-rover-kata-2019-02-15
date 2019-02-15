@@ -23,13 +23,9 @@ class Direction(abc.ABC):
     def opposite(self) -> 'Direction':
         ...
 
+    @abc.abstractmethod
     def next_to_the_right(self) -> 'Direction':
-        if self == Direction.east():
-            return Direction.south()
-        elif self == Direction.south():
-            return Direction.west()
-        else:
-            return Direction.north()
+        ...
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}()'
@@ -45,7 +41,7 @@ class North(Direction):
     def opposite(self) -> Direction:
         return Direction.south()
 
-    def next_to_the_right(self) -> 'Direction':
+    def next_to_the_right(self) -> Direction:
         return Direction.east()
 
 
@@ -54,17 +50,26 @@ class South(Direction):
     def opposite(self) -> Direction:
         return Direction.north()
 
+    def next_to_the_right(self) -> Direction:
+        return Direction.west()
+
 
 class East(Direction):
 
     def opposite(self) -> Direction:
         return Direction.west()
 
+    def next_to_the_right(self) -> Direction:
+        return Direction.south()
+
 
 class West(Direction):
 
     def opposite(self) -> Direction:
         return Direction.east()
+
+    def next_to_the_right(self) -> Direction:
+        return Direction.north()
 
 
 class Location:

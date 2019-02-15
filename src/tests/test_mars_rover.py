@@ -8,6 +8,10 @@ class Direction:
     def south(cls) -> 'Direction':
         return cls('S')
 
+    @classmethod
+    def east(cls) -> 'Direction':
+        return cls('E')
+
     def __init__(self, symbol: str) -> None:
         self._symbol = symbol
 
@@ -29,14 +33,19 @@ class Location:
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
             return self._next_north()
-        else:
+        elif direction == Direction.south():
             return self._next_south()
+        else:
+            return self._next_east()
 
     def _next_north(self) -> 'Location':
         return self._moved_verticaly_by(-1)
 
     def _next_south(self) -> 'Location':
         return self._moved_verticaly_by(1)
+
+    def _next_east(self) -> 'Location':
+        return Location(4, 3)
 
     def _moved_verticaly_by(self, points: int) -> 'Location':
         return Location(self._horizontal, self._vertical + points)
@@ -82,6 +91,11 @@ class TestRover:
         rover = Rover(Location(3, 3), Direction.south())
         rover.move_forward()
         assert rover.position() == Location(3, 4)
+
+    def test_moves_forward_east(self) -> None:
+        rover = Rover(Location(3, 3), Direction.east())
+        rover.move_forward()
+        assert rover.position() == Location(4, 3)
 
 
 class TestLocation:

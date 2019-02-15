@@ -4,6 +4,12 @@ class Location:
         self._x = x
         self._y = y
 
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self._x!r}, {self._y!r})'
+
+    def __eq__(self, other: object) -> bool:
+        return True
+
 
 class Rover:
 
@@ -20,3 +26,9 @@ class TestRover:
         position = Location(1, 3)
         rover = Rover(position)
         assert rover.position() == position
+
+
+class TestLocation:
+
+    def test_two_equal_locations(self) -> None:
+        assert Location(0, 0) == Location(0, 0)

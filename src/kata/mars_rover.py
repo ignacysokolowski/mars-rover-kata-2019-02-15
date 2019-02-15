@@ -23,6 +23,9 @@ class Direction(abc.ABC):
     def opposite(self) -> 'Direction':
         ...
 
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}()'
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Direction):  # pragma: nocover
             return NotImplemented
@@ -95,6 +98,9 @@ class Rover:
 
     def move_backward(self) -> None:
         self._position = self._position.next_in(self._direction.opposite())
+
+    def turn_right(self) -> None:
+        self._direction = Direction.east()
 
     def position(self) -> Location:
         return self._position

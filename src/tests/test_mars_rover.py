@@ -86,10 +86,10 @@ class TestLocation:
     def test_two_equal_locations(self) -> None:
         assert Location(0, 0) == Location(0, 0)
 
-    def test_two_locations_with_differrent_x(self) -> None:
+    def test_two_locations_with_differrent_vertical_position(self) -> None:
         assert Location(0, 0) != Location(1, 0)
 
-    def test_two_locations_with_differrent_y(self) -> None:
+    def test_two_locations_with_differrent_horizontal_position(self) -> None:
         assert Location(0, 0) != Location(0, 1)
 
 

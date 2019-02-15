@@ -29,7 +29,7 @@ class Direction(abc.ABC):
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Direction):  # pragma: nocover
             return NotImplemented
-        return self._symbol == other._symbol
+        return type(self) == type(other)
 
 
 class North(Direction):

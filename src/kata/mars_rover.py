@@ -102,8 +102,10 @@ class Rover:
     def turn_right(self) -> None:
         if self._direction == Direction.north():
             self._direction = Direction.east()
-        else:
+        elif self._direction == Direction.east():
             self._direction = Direction.south()
+        else:
+            self._direction = Direction.west()
 
     def position(self) -> Location:
         return self._position

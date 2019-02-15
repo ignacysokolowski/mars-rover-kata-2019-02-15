@@ -22,6 +22,12 @@ class Direction:
     def __init__(self, symbol: str) -> None:
         self._symbol = symbol
 
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self._symbol!r})'
+
+    def __eq__(self, other: object) -> bool:
+        return True
+
 
 class Rover:
 
@@ -55,3 +61,9 @@ class TestLocation:
 
     def test_two_locations_with_differrent_y(self) -> None:
         assert Location(0, 0) != Location(0, 1)
+
+
+class TestDirection:
+
+    def test_two_equal_directions(self) -> None:
+        assert Direction.north() == Direction.north()

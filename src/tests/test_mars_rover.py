@@ -42,7 +42,7 @@ class Rover:
         self._direction = initial_direction
 
     def move_forward(self) -> None:
-        self._position = Location(0, 1)
+        self._position = Location(3, 4)
 
     def position(self) -> Location:
         return self._position
@@ -59,9 +59,9 @@ class TestRover:
         assert rover.direction() == Direction.north()
 
     def test_moves_forward_south(self) -> None:
-        rover = Rover(Location(0, 0), Direction.south())
+        rover = Rover(Location(3, 3), Direction.south())
         rover.move_forward()
-        assert rover.position() == Location(0, 1)
+        assert rover.position() == Location(3, 4)
 
 
 class TestLocation:

@@ -80,6 +80,9 @@ class Rover:
     def move_forward(self) -> None:
         self._position = self._position.next_in(self._direction)
 
+    def move_backward(self) -> None:
+        self._position = self._position.next_in(Direction.south())
+
     def position(self) -> Location:
         return self._position
 

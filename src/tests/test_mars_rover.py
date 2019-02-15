@@ -36,7 +36,7 @@ class Location:
         return Location(self._x, self._y - 1)
 
     def _next_south(self) -> 'Location':
-        return Location(self._x, 4)
+        return Location(self._x, self._y + 1)
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._x!r}, {self._y!r})'

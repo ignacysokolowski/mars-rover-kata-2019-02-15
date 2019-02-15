@@ -31,25 +31,25 @@ class Direction(abc.ABC):
 
 class North(Direction):
 
-    def opposite(self) -> 'Direction':
+    def opposite(self) -> Direction:
         return Direction.south()
 
 
 class South(Direction):
 
-    def opposite(self) -> 'Direction':
+    def opposite(self) -> Direction:
         return Direction.north()
 
 
 class East(Direction):
 
-    def opposite(self) -> 'Direction':
+    def opposite(self) -> Direction:
         return Direction.west()
 
 
 class West(Direction):
 
-    def opposite(self) -> 'Direction':
+    def opposite(self) -> Direction:
         return Direction.east()
 
 

@@ -33,10 +33,13 @@ class Location:
             return self._next_south()
 
     def _next_north(self) -> 'Location':
-        return Location(self._horizontal, self._vertical - 1)
+        return self._with_vertical_position_at(self._vertical - 1)
 
     def _next_south(self) -> 'Location':
-        return Location(self._horizontal, self._vertical + 1)
+        return self._with_vertical_position_at(self._vertical + 1)
+
+    def _with_vertical_position_at(self, new_vertical: int) -> 'Location':
+        return Location(self._horizontal, new_vertical)
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._horizontal!r}, {self._vertical!r})'

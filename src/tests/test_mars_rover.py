@@ -51,10 +51,13 @@ class Location:
         return self._moved_verticaly_by(1)
 
     def _next_east(self) -> 'Location':
-        return Location(4, 3)
+        return self._moved_horizontaly_by(1)
 
     def _next_west(self) -> 'Location':
-        return Location(2, 3)
+        return self._moved_horizontaly_by(-1)
+
+    def _moved_horizontaly_by(self, points: int) -> 'Location':
+        return Location(self._horizontal + points, self._vertical)
 
     def _moved_verticaly_by(self, points: int) -> 'Location':
         return Location(self._horizontal, self._vertical + points)

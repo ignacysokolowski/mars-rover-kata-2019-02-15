@@ -1,7 +1,7 @@
 import pytest
 
 from kata.direction import Direction
-from kata.mars_rover import Location
+from kata.location import Location
 from kata.mars_rover import Rover
 
 

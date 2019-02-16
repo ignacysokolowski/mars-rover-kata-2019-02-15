@@ -7,7 +7,7 @@ cd "$(dirname "$0")/../src"
 if [ "$1" = "--coverage" ]; then
   ARGS="\
   -v \
-  --cov kata \
+  --cov mars_rover \
   --cov-report term-missing \
   --cov-report html:../ci/test/reports/coverage \
   --junit-xml=../ci/test/reports/results.xml \

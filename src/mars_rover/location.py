@@ -15,6 +15,10 @@ class Step:
     def east(cls) -> 'Step':
         return cls(1, 0)
 
+    @classmethod
+    def west(cls) -> 'Step':
+        return cls(-1, 0)
+
     def __init__(self, east: int, south: int) -> None:
         self._east = east
         self._south = south
@@ -40,7 +44,7 @@ class Location:
         elif direction == Direction.east():
             return self._moved_by(Step.east())
         else:
-            return self._moved_by(Step(-1, 0))
+            return self._moved_by(Step.west())
 
     def _moved_by(self, step: Step) -> 'Location':
         return Location(

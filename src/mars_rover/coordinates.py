@@ -14,9 +14,9 @@ class Coordinates:
 
     def __init__(self, horizontal: int, vertical: int) -> None:
         if horizontal < 0:
-            raise NegativeHorizontalCoordinate('Coordinates can not be negative')
+            raise NegativeHorizontalCoordinate()
         elif vertical < 0:
-            raise NegativeVerticalCoordinate('Coordinates can not be negative')
+            raise NegativeVerticalCoordinate()
         self._horizontal = horizontal
         self._vertical = vertical
 

@@ -80,14 +80,12 @@ class TestRover:
 class TestCoordinates:
 
     def test_horizontal_position_can_not_be_negative(self) -> None:
-        with pytest.raises(NegativeHorizontalCoordinate) as exception:
+        with pytest.raises(NegativeHorizontalCoordinate):
             Coordinates(-1, 0)
-        assert str(exception.value) == 'Coordinates can not be negative'
 
     def test_vertical_position_can_not_be_negative(self) -> None:
-        with pytest.raises(NegativeVerticalCoordinate) as exception:
+        with pytest.raises(NegativeVerticalCoordinate):
             Coordinates(0, -1)
-        assert str(exception.value) == 'Coordinates can not be negative'
 
     def test_two_equal_coordinates(self) -> None:
         assert Coordinates(0, 0) == Coordinates(0, 0)

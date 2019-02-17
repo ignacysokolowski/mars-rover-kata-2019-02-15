@@ -1,8 +1,9 @@
 import pytest
 
 from mars_rover import Coordinates
-from mars_rover import CoordinatesNegative
 from mars_rover import Direction
+from mars_rover import NegativeHorizontalCoordinate
+from mars_rover import NegativeVerticalCoordinate
 from mars_rover import Rover
 
 
@@ -79,12 +80,12 @@ class TestRover:
 class TestCoordinates:
 
     def test_horizontal_position_can_not_be_negative(self) -> None:
-        with pytest.raises(CoordinatesNegative) as exception:
+        with pytest.raises(NegativeHorizontalCoordinate) as exception:
             Coordinates(-1, 0)
         assert str(exception.value) == 'Coordinates can not be negative'
 
     def test_vertical_position_can_not_be_negative(self) -> None:
-        with pytest.raises(CoordinatesNegative) as exception:
+        with pytest.raises(NegativeVerticalCoordinate) as exception:
             Coordinates(0, -1)
         assert str(exception.value) == 'Coordinates can not be negative'
 

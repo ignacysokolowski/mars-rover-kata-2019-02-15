@@ -2,15 +2,21 @@ from .direction import Direction
 from .step import Step
 
 
-class CoordinatesNegative(Exception):
+class NegativeHorizontalCoordinate(Exception):
+    pass
+
+
+class NegativeVerticalCoordinate(Exception):
     pass
 
 
 class Coordinates:
 
     def __init__(self, horizontal: int, vertical: int) -> None:
-        if horizontal < 0 or vertical < 0:
-            raise CoordinatesNegative('Coordinates can not be negative')
+        if horizontal < 0:
+            raise NegativeHorizontalCoordinate('Coordinates can not be negative')
+        elif vertical < 0:
+            raise NegativeVerticalCoordinate('Coordinates can not be negative')
         self._horizontal = horizontal
         self._vertical = vertical
 

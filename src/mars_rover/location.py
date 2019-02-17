@@ -20,7 +20,7 @@ class Location:
         if direction == Direction.north():
             return self._moved_by(Step(-1))
         elif direction == Direction.south():
-            return self._moved_verticaly_by(1)
+            return self._moved_by(Step(1))
         elif direction == Direction.east():
             return self._moved_horizontaly_by(1)
         else:

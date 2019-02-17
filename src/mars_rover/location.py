@@ -3,6 +3,10 @@ from .direction import Direction
 
 class Step:
 
+    @classmethod
+    def north(cls) -> 'Step':
+        return cls(-1)
+
     def __init__(self, south: int) -> None:
         self._south = south
 
@@ -18,7 +22,7 @@ class Location:
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
-            return self._moved_by(Step(-1))
+            return self._moved_by(Step.north())
         elif direction == Direction.south():
             return self._moved_by(Step(1))
         elif direction == Direction.east():

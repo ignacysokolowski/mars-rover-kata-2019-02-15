@@ -33,8 +33,9 @@ class Direction(abc.ABC):
     def next_to_the_left(self) -> 'Direction':
         ...
 
+    @abc.abstractmethod
     def step(self) -> Step:
-        return Step.west()
+        ...
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}()'
@@ -100,3 +101,6 @@ class West(Direction):
 
     def next_to_the_left(self) -> Direction:
         return Direction.south()
+
+    def step(self) -> Step:
+        return Step.west()

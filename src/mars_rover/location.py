@@ -9,14 +9,7 @@ class Location:
         self._vertical = vertical
 
     def next_in(self, direction: Direction) -> 'Location':
-        if direction == Direction.north():
-            return self._moved_by(Step.north())
-        elif direction == Direction.south():
-            return self._moved_by(Step.south())
-        elif direction == Direction.east():
-            return self._moved_by(Step.east())
-        else:
-            return self._moved_by(Step.west())
+        return self._moved_by(direction.step())
 
     def _moved_by(self, step: Step) -> 'Location':
         return Location(

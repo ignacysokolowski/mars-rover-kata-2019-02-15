@@ -1,5 +1,7 @@
 import abc
 
+from .step import Step
+
 
 class Direction(abc.ABC):
 
@@ -30,6 +32,16 @@ class Direction(abc.ABC):
     @abc.abstractmethod
     def next_to_the_left(self) -> 'Direction':
         ...
+
+    def step(self) -> Step:
+        if self == Direction.north():
+            return Step.north()
+        elif self == Direction.south():
+            return Step.south()
+        elif self == Direction.east():
+            return Step.east()
+        else:
+            return Step.west()
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}()'

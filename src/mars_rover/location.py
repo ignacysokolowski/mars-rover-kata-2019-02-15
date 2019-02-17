@@ -18,14 +18,16 @@ class Location:
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
-            step = Step(-1)
-            return Location(self._horizontal, self._vertical + step.points_south())
+            return self._moved_by(Step(-1))
         elif direction == Direction.south():
             return self._moved_verticaly_by(1)
         elif direction == Direction.east():
             return self._moved_horizontaly_by(1)
         else:
             return self._moved_horizontaly_by(-1)
+
+    def _moved_by(self, step: Step) -> 'Location':
+        return Location(self._horizontal, self._vertical + step.points_south())
 
     def _moved_horizontaly_by(self, points: int) -> 'Location':
         return Location(self._horizontal + points, self._vertical)

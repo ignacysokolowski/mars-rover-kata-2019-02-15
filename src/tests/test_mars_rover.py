@@ -12,25 +12,23 @@ class TestRover:
         assert rover.position() == Location(1, 3)
         assert rover.direction() == Direction.north()
 
-    def test_moves_forward_north(self) -> None:
-        rover = Rover(Location(3, 3), Direction.north())
+    @pytest.mark.parametrize(
+        ('direction', 'initial', 'final'), [
+            (Direction.north(), Location(3, 3), Location(3, 2)),
+            (Direction.south(), Location(3, 3), Location(3, 4)),
+            (Direction.east(), Location(3, 3), Location(4, 3)),
+            (Direction.west(), Location(3, 3), Location(2, 3)),
+        ],
+    )
+    def test_moves_forward(
+            self,
+            direction: Direction,
+            initial: Location,
+            final: Location,
+    ) -> None:
+        rover = Rover(initial, direction)
         rover.move_forward()
-        assert rover.position() == Location(3, 2)
-
-    def test_moves_forward_south(self) -> None:
-        rover = Rover(Location(3, 3), Direction.south())
-        rover.move_forward()
-        assert rover.position() == Location(3, 4)
-
-    def test_moves_forward_east(self) -> None:
-        rover = Rover(Location(3, 3), Direction.east())
-        rover.move_forward()
-        assert rover.position() == Location(4, 3)
-
-    def test_moves_forward_west(self) -> None:
-        rover = Rover(Location(3, 3), Direction.west())
-        rover.move_forward()
-        assert rover.position() == Location(2, 3)
+        assert rover.position() == final
 
     def test_moves_backward_south_when_facing_north(self) -> None:
         rover = Rover(Location(3, 3), Direction.north())

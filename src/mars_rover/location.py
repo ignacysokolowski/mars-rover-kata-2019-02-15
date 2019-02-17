@@ -1,6 +1,15 @@
 from .direction import Direction
 
 
+class Step:
+
+    def __init__(self, south: int) -> None:
+        self._south = south
+
+    def points_south(self) -> int:
+        return self._south
+
+
 class Location:
 
     def __init__(self, horizontal: int, vertical: int) -> None:
@@ -9,7 +18,8 @@ class Location:
 
     def next_in(self, direction: Direction) -> 'Location':
         if direction == Direction.north():
-            return self._moved_verticaly_by(-1)
+            step = Step(-1)
+            return Location(self._horizontal, self._vertical + step.points_south())
         elif direction == Direction.south():
             return self._moved_verticaly_by(1)
         elif direction == Direction.east():

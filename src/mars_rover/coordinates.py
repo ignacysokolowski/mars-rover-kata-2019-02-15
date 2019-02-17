@@ -6,7 +6,7 @@ class Coordinates:
 
     def __init__(self, horizontal: int, vertical: int) -> None:
         if horizontal < 0:
-            raise ValueError()
+            raise ValueError('Coordinates can not be negative')
         self._horizontal = horizontal
         self._vertical = vertical
 

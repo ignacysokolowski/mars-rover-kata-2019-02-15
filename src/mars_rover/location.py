@@ -36,16 +36,13 @@ class Location:
         elif direction == Direction.east():
             return self._moved_by(Step(1, 0))
         else:
-            return self._moved_horizontaly_by(-1)
+            return self._moved_by(Step(-1, 0))
 
     def _moved_by(self, step: Step) -> 'Location':
         return Location(
             self._horizontal + step.points_east(),
             self._vertical + step.points_south(),
         )
-
-    def _moved_horizontaly_by(self, points: int) -> 'Location':
-        return Location(self._horizontal + points, self._vertical)
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._horizontal!r}, {self._vertical!r})'

@@ -5,17 +5,21 @@ class Step:
 
     @classmethod
     def north(cls) -> 'Step':
-        return cls(-1)
+        return cls(0, -1)
 
     @classmethod
     def south(cls) -> 'Step':
-        return cls(1)
+        return cls(0, 1)
 
-    def __init__(self, south: int) -> None:
+    def __init__(self, east: int, south: int) -> None:
+        self._east = east
         self._south = south
 
     def points_south(self) -> int:
         return self._south
+
+    def points_east(self) -> int:
+        return self._east
 
 
 class Location:
@@ -30,12 +34,15 @@ class Location:
         elif direction == Direction.south():
             return self._moved_by(Step.south())
         elif direction == Direction.east():
-            return self._moved_horizontaly_by(1)
+            return self._moved_by(Step(1, 0))
         else:
             return self._moved_horizontaly_by(-1)
 
     def _moved_by(self, step: Step) -> 'Location':
-        return Location(self._horizontal, self._vertical + step.points_south())
+        return Location(
+            self._horizontal + step.points_east(),
+            self._vertical + step.points_south(),
+        )
 
     def _moved_horizontaly_by(self, points: int) -> 'Location':
         return Location(self._horizontal + points, self._vertical)

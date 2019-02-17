@@ -34,9 +34,7 @@ class Direction(abc.ABC):
         ...
 
     def step(self) -> Step:
-        if self == Direction.north():
-            return Step.north()
-        elif self == Direction.south():
+        if self == Direction.south():
             return Step.south()
         elif self == Direction.east():
             return Step.east()
@@ -62,6 +60,9 @@ class North(Direction):
 
     def next_to_the_left(self) -> Direction:
         return Direction.west()
+
+    def step(self) -> Step:
+        return Step.north()
 
 
 class South(Direction):

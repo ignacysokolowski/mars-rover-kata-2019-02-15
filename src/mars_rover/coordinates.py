@@ -2,17 +2,17 @@ from .direction import Direction
 from .step import Step
 
 
-class Location:
+class Coordinates:
 
     def __init__(self, horizontal: int, vertical: int) -> None:
         self._horizontal = horizontal
         self._vertical = vertical
 
-    def next_in(self, direction: Direction) -> 'Location':
+    def next_in(self, direction: Direction) -> 'Coordinates':
         return self._moved_by(direction.step())
 
-    def _moved_by(self, step: Step) -> 'Location':
-        return Location(
+    def _moved_by(self, step: Step) -> 'Coordinates':
+        return Coordinates(
             self._horizontal + step.points_east(),
             self._vertical + step.points_south(),
         )
@@ -21,6 +21,6 @@ class Location:
         return f'{self.__class__.__name__}({self._horizontal!r}, {self._vertical!r})'
 
     def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Location):  # pragma: nocover
+        if not isinstance(other, Coordinates):  # pragma: nocover
             return NotImplemented
         return self._horizontal == other._horizontal and self._vertical == other._vertical

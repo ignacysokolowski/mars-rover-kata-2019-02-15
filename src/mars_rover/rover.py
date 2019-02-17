@@ -1,10 +1,10 @@
+from .coordinates import Coordinates
 from .direction import Direction
-from .location import Location
 
 
 class Rover:
 
-    def __init__(self, initial_position: Location, initial_direction: Direction) -> None:
+    def __init__(self, initial_position: Coordinates, initial_direction: Direction) -> None:
         self._position = initial_position
         self._direction = initial_direction
 
@@ -20,7 +20,7 @@ class Rover:
     def turn_left(self) -> None:
         self._direction = self._direction.next_to_the_left()
 
-    def position(self) -> Location:
+    def position(self) -> Coordinates:
         return self._position
 
     def direction(self) -> Direction:

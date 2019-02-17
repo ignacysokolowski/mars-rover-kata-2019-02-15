@@ -34,10 +34,7 @@ class Direction(abc.ABC):
         ...
 
     def step(self) -> Step:
-        if self == Direction.east():
-            return Step.east()
-        else:
-            return Step.west()
+        return Step.west()
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}()'
@@ -88,6 +85,9 @@ class East(Direction):
 
     def next_to_the_left(self) -> Direction:
         return Direction.north()
+
+    def step(self) -> Step:
+        return Step.east()
 
 
 class West(Direction):

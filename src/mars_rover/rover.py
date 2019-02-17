@@ -4,7 +4,11 @@ from .direction import Direction
 
 class Rover:
 
-    def __init__(self, initial_position: Coordinates, initial_direction: Direction) -> None:
+    def __init__(
+            self,
+            initial_position: Coordinates,
+            initial_direction: Direction,
+    ) -> None:
         self._position = initial_position
         self._direction = initial_direction
 

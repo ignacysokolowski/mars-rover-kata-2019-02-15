@@ -77,7 +77,7 @@ class TestRover:
 
 class TestCoordinates:
 
-    def test_vertical_position_can_not_be_negative(self) -> None:
+    def test_horizontal_position_can_not_be_negative(self) -> None:
         with pytest.raises(ValueError) as error:
             Coordinates(-1, 0)
         assert str(error.value) == 'Coordinates can not be negative'

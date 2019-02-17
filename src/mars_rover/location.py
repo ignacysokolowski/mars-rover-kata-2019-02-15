@@ -32,9 +32,6 @@ class Location:
     def _moved_horizontaly_by(self, points: int) -> 'Location':
         return Location(self._horizontal + points, self._vertical)
 
-    def _moved_verticaly_by(self, points: int) -> 'Location':
-        return Location(self._horizontal, self._vertical + points)
-
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self._horizontal!r}, {self._vertical!r})'
 
